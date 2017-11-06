@@ -4,6 +4,5 @@ resources :users do
     resources :comments
   end
 end
-  resources :posts only: [:index, :show]
-end
+resources :posts, only: [:index, :show]
 end
