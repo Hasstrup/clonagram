@@ -5,16 +5,14 @@ class PostController < ApplicationController
   end
 
   def create
-    @newpost = Post.new(post_params)
     @user = User.find(params[:user_id])
-    @user.posts << @newpost
-    @newpost.save
-    @user.save
+    @post = @user.posts.create(post_params)
     redirect_to action: 'index'
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
     @post.destroy
     return
   end

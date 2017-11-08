@@ -5,4 +5,6 @@ resources :users do
   end
 end
 resources :posts, only: [:index, :show]
+
+post 'user/:id/follow/:user_id', :to => 'users#add_follower'
 end

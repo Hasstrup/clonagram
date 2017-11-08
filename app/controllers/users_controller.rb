@@ -30,11 +30,14 @@ class UsersController < ApplicationController
       return
     end
 
+    def add_follower
+      @relationship = Relationship.create(follower_id: params[:id], followed_id: params[:user_id])
+      @relationship.save
+      return
+    end
+
     private
     def user_params
       params.require(:user).permit(:name, :username, :password)
     end
-
-
-
 end
